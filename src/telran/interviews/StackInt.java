@@ -9,17 +9,17 @@ import java.util.NoSuchElementException;
  *
  */
 public class StackInt {
-	private LinkedList<Integer> elements = new LinkedList<>();
-	private LinkedList<Integer> maxList = new LinkedList<>();
+	private LinkedList<Integer> numbers = new LinkedList<>();
+	private LinkedList<Integer> maxNumbers = new LinkedList<>();
 	/**
 	 * 
 	 * @param num
 	 * adds num in the stack
 	 */
-	public void push(int newElement) {
-		elements.add(newElement);
-		if(maxList.isEmpty() || newElement >= maxList.getLast()) {
-			maxList.add(newElement);
+	public void push(int num) {
+		numbers.add(num);
+		if (maxNumbers.isEmpty() || num >= maxNumbers.getLast()) {
+			maxNumbers.add(num);
 		}
 	}
 	/**
@@ -29,12 +29,10 @@ public class StackInt {
 	 * in the case the stack is empty the exception of the class NoSuchElement should be thrown
 	 */
 	public int pop() {
-		if(elements.isEmpty()) {
-			throw new NoSuchElementException();
-		}
-		int res = elements.removeLast();
-		if(res == maxList.getLast()) {
-			maxList.removeLast();
+		
+		int res = numbers.removeLast();
+		if (res == maxNumbers.getLast()) {
+			maxNumbers.removeLast();
 		}
 		return res;
 	}
@@ -43,8 +41,7 @@ public class StackInt {
 	 * @return true if the stack is empty
 	 */
 	public boolean isEmpty() {
-		
-		return elements.isEmpty();
+		return numbers.isEmpty();
 	}
 	/**
 	 * 
@@ -52,10 +49,7 @@ public class StackInt {
 	 * throws NoSuchElementException in the case the stack is empty
 	 */
 	public int max() {
-		if(maxList.isEmpty()) {
-			throw new NoSuchElementException();
-		}
 		
-		return maxList.getLast();
+		return maxNumbers.getLast();
 	}
 }
